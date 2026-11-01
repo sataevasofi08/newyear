@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Ёлочные чудеса — Игрушки ручной работы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red-dark: #8B1A1A;
+            --red: #C41E3A;
+            --red-light: #E74C5E;
+            --green-dark: #1B5E20;
+            --green: #2E7D32;
+            --green-light: #4CAF50;
+            --gold: #FFD700;
+            --gold-dark: #DAA520;
+            --cream: #FFF8F0;
+            --white: #FFFFFF;
+            --dark: #1a1a2e;
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* ===== SNOWFALL ===== */
+        .snowfall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1rem;
+            animation: fall linear infinite;
+            pointer-events: none;
+            z-index: 9999;
+            text-shadow: 0 0 5px rgba(255,255,255,0.7);
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        /* ===== HEADER / NAV ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        header.transparent {
+            background: transparent;
+        }
+
+        header.scrolled {
+            background: rgba(139, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 30px var(--shadow);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Marck Script', cursive;
+            font-size: 2rem;
+            color: var(--white);
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger span {
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 40%, var(--green-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: bgMove 20s linear infinite;
+        }
+
+        @keyframes bgMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+
+        .hero-ornaments {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .ornament {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .ornament:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; font-size: 4rem; }
+        .ornament:nth-child(2) { top: 20%; right: 8%; animation-delay: 1s; font-size: 3.5rem; }
+        .ornament:nth-child(3) { bottom: 30%; left: 10%; animation-delay: 2s; }
+        .ornament:nth-child(4) { bottom: 15%; right: 15%; animation-delay: 0.5s; font-size: 5rem; }
+        .ornament:nth-child(5) { top: 50%; left: 50%; animation-delay: 1.5s; font-size: 2.5rem; }
+        .ornament:nth-child(6) { top: 60%; left: 80%; animation-delay: 3s; font-size: 3rem; }
+        .ornament:nth-child(7) { top: 75%; left: 25%; animation-delay: 2.5s; font-size: 2rem; }
+        .ornament:nth-child(8) { top: 5%; left: 60%; animation-delay: 4s; font-size: 3.5rem; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 30px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Marck Script', cursive;
+            font-size: 4.5rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease 0.2s both;
+        }
+
+        .hero h1 .highlight {
+            color: var(--gold);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeInDown 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInDown 1s ease 0.6s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark);
+            box-shadow: 0 5px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--red-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-red {
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            color: var(--white);
+            box-shadow: 0 5px 25px rgba(196, 30, 58, 0.4);
+        }
+
+        .btn-red:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(196, 30, 58, 0.6);
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+        }
+
+        .hero-wave svg {
+            display: block;
+            width: 100%;
+        }
+
+        /* ===== GARLAND (decorative line between sections) ===== */
+        .garland {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            gap: 15px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+
+        .garland-line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--red), transparent);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 100px 30px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header .subtitle {
+            color: var(--red);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-family: 'Marck Script', cursive;
+            font-size: 3.2rem;
+            color: var(--green-dark);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-header .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--red), var(--gold), var(--green));
+            margin: 20px auto;
+            border-radius: 3px;
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            background: var(--white);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 50px 35px;
+            border-radius: 20px;
+            background: var(--cream);
+            border: 1px solid rgba(196, 30, 58, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--gold), var(--green));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--green-dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #777;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ===== PRODUCTS / CATALOG ===== */
+        .catalog {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+        }
+
+        .catalog-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border: 2px solid var(--red);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--red);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .products-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+
+        .product-card:nth-child(1) .product-image {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+        }
+        .product-card:nth-child(2) .product-image {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+        }
+        .product-card:nth-child(3) .product-image {
+            background: linear-gradient(135deg, #fef9c3, #fde68a);
+        }
+        .product-card:nth-child(4) .product-image {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+        }
+        .product-card:nth-child(5) .product-image {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+        }
+        .product-card:nth-child(6) .product-image {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--red);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-badge.new {
+            background: var(--green);
+        }
+
+        .product-badge.hit {
+            background: var(--gold-dark);
+            color: var(--dark);
+        }
+
+        .product-favorite {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .product-favorite:hover {
+            transform: scale(1.15);
+            background: var(--red);
+        }
+
+        .product-favorite:hover span {
+            filter: brightness(0) invert(1);
+        }
+
+        .product-favorite.active {
+            background: var(--red);
+        }
+
+        .product-favorite.active span {
+            filter: brightness(0) invert(1);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            color: var(--red);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .product-info p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        .product-price .old-price {
+            font-size: 0.9rem;
+            color: #bbb;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: 400;
+        }
+
+        .btn-cart {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .btn-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.4);
+        }
+
+        /* ===== ABOUT / PROCESS ===== */
+        .process {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5C20 16.0817 16.4183 12.5 12 12.5C7.58172 12.5 4 16.0817 4 20.5' stroke='%23ffffff' stroke-opacity='0.05' fill='none'/%3E%3C/svg%3E");
+        }
+
+        .process .section-header h2 {
+            color: var(--white);
+        }
+
+        .process .section-header .subtitle {
+            color: var(--gold);
+        }
+
+        .process .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .process-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 3px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+            font-weight: 700;
+            color: var(--gold);
+            transition: all 0.3s;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--gold);
+            color: var(--green-dark);
+            transform: scale(1.1);
+        }
+
+        .process-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card::before {
+            content: '❝';
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 4rem;
+            color: var(--red);
+            opacity: 0.15;
+            font-family: serif;
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--red), var(--green));
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .author-info span {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* ===== PROMO BANNER ===== */
+        .promo {
+            background: linear-gradient(135deg, var(--red-dark), var(--red));
+            padding: 80px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo::before,
+        .promo::after {
+            content: '🎄';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+        }
+
+        .promo::before {
+            top: -20px;
+            left: 5%;
+            transform: rotate(-15deg);
+        }
+
+        .promo::after {
+            bottom: -20px;
+            right: 5%;
+            transform: rotate(15deg);
+        }
+
+        .promo-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo h2 {
+            font-family: 'Marck Script', cursive;
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .promo p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+
+        .promo-discount {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 2.5rem;
+            font-weight: 800;
+            padding: 15px 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: all 0.4s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #f87171, #ef4444);
+            font-size: 6rem;
+        }
+
+        .gallery-item:nth-child(2) {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+        }
+
+        .gallery-item:nth-child(3) {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg, #c084fc, #a855f7);
+        }
+
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(135deg, #fb923c, #f97316);
+        }
+
+        .gallery-item:nth-child(6) {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            font-size: 6rem;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+            border-radius: 15px;
+        }
+
+        .gallery-overlay span {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px 25px;
+            border: 2px solid white;
+            border-radius: 50px;
+        }
+
+        /* ===== CONTACT / ORDER ===== */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Marck Script', cursive;
+            font-size: 2.2rem;
+            color: var(--green-dark);
+            margin-bottom: 20px;
+        }
+
+        .contact-info > p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text h4 {
+            font-size: 0.95rem;
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .contact-item-text p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .contact-form {
+            background: var(--cream);
+            padding: 45px;
+            border-radius: 25px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .contact-form h3 {
+            font-family: 'Marck Script', cursive;
+            font-size: 2rem;
+            color: var(--red-dark);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 0 4px rgba(196, 30, 58, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 16px;
+            font-size: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 80px 30px 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--gold), var(--green), var(--gold), var(--red));
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            font-size: 2.2rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-column ul a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .footer-column ul a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ===== COUNTER / STATS ===== */
+        .stats {
+            background: var(--cream);
+            padding: 60px 30px;
+        }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--red);
+            display: block;
+            font-family: 'Marck Script', cursive;
+        }
+
+        .stat-label {
+            color: #777;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        /* ===== ANIMATIONS ON SCROLL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--red);
+        }
+
+        .modal h3 {
+            font-family: 'Marck Script', cursive;
+            font-size: 2.2rem;
+            color: var(--green-dark);
+            margin-bottom: 15px;
+        }
+
+        .modal .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .modal p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 200px);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+
+            .gallery-item:nth-child(6) {
+                grid-column: span 2;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--red-dark);
+                flex-direction: column;
+                justify-content: center;
+                padding: 40px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(6) {
+                grid-column: span 1;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .promo h2 {
+                font-size: 2.2rem;
+            }
+
+            .promo-discount {
+                font-size: 1.8rem;
+                padding: 12px 30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SNOWFALL ===== -->
+    <div class="snowfall" id="snowfall"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header" class="transparent">
+        <nav>
+            <a href="#" class="logo">🎄 Ёлочные <span>Чудеса</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">О нас</a></li>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#process">Как создаём</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-ornaments">
+            <div class="ornament">🎄</div>
+            <div class="ornament">🔴</div>
+            <div class="ornament">⭐</div>
+            <div class="ornament">🎁</div>
+            <div class="ornament">❄️</div>
+            <div class="ornament">🎀</div>
+            <div class="ornament">✨</div>
+            <div class="ornament">🌟</div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">✨ Ручная работа с душой</div>
+            <h1>Волшебные ёлочные <span class="highlight">игрушки</span> ручной работы</h1>
+            <p>Каждая игрушка — это маленькое чудо, созданное с любовью и заботой нашими мастерами. Подарите вашей ёлке неповторимый стиль и тепло домашнего уюта</p>
+            <div class="hero-buttons">
+                <a href="#catalog" class="btn btn-primary">🎄 Смотреть каталог</a>
+                <a href="#contact" class="btn btn-secondary">📞 Заказать</a>
+            </div>
+        </div>
+
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,80 1440,60 L1440,120 L0,120 Z" fill="#FFFFFF"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="section-header reveal">
+            <p class="subtitle">Почему выбирают нас</p>
+            <h2>Наши преимущества</h2>
+            <div class="divider"></div>
+            <p>Мы создаём не просто украшения — мы создаём новогоднее настроение и семейные традиции</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <span class="feature-icon">🎨</span>
+                <h3>100% ручная работа</h3>
+                <p>Каждая игрушка расписана вручную нашими мастерами с многолетним опытом. Никаких штампов и конвейеров!</p>
+            </div>
+            <div class="feature-card reveal">
+                <span class="feature-icon">🌿</span>
+                <h3>Эко-материалы</h3>
+                <p>Используем только натуральное дерево, безопасные краски и экологичные материалы. Безопасно для детей и природы</p>
+            </div>
+            <div class="feature-card reveal">
+                <span class="feature-icon">🎁</span>
+                <h3>Подарочная упаковка</h3>
+                <p>Каждый заказ бережно упаковывается в праздничную коробку — идеальный подарок для близких</p>
+            </div>
+            <div class="feature-card reveal">
+                <span class="feature-icon">✨</span>
+                <h3>Уникальный дизайн</h3>
+                <p>Возможность заказать игрушку по вашему эскизу. Имя, дата, пожелание — персонализация без границ</p>
+            </div>
+            <div class="feature-card reveal">
+                <span class="feature-icon">🚚</span>
+                <h3>Бережная доставка</h3>
+                <p>Специальная упаковка с защитой от повреждений. Доставляем по всей России в целости и сохранности</p>
+            </div>
+            <div class="feature-card reveal">
+                <span class="feature-icon">💝</span>
+                <h3>С любовью и душой</h3>
+                <p>Каждая игрушка несёт тепло рук мастера и частичку новогоднего волшебства для вашего дома</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <div class="stats">
+        <div class="stats-grid">
+            <div class="stat-item reveal">
+                <span class="stat-number" data-target="5000">0</span>
+                <p class="stat-label">Счастливых клиентов</p>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number" data-target="12000">0</span>
+                <p class="stat-label">Игрушек создано</p>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number" data-target="8">0</span>
+                <p class="stat-label">Лет мастерства</p>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number" data-target="150">0</span>
+                <p class="stat-label">Уникальных дизайнов</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CATALOG ===== -->
+    <section class="catalog" id="catalog">
+        <div class="section-header reveal">
+            <p class="subtitle">Наша коллекция</p>
+            <h2>Каталог игрушек</h2>
+            <div class="divider"></div>
+            <p>Откройте для себя волшебный мир ручных ёлочных украшений — от классики до современных дизайнов</p>
+        </div>
+
+        <div class="catalog-tabs reveal">
+            <button class="tab-btn active" onclick="filterProducts('all')">Все</button>
+            <button class="tab-btn" onclick="filterProducts('classic')">Классические</button>
+            <button class="tab-btn" onclick="filterProducts('wooden')">Деревянные</button>
+            <button class="tab-btn" onclick="filterProducts('glass')">Стеклянные</button>
+            <button class="tab-btn" onclick="filterProducts('personalized')">Именные</button>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card reveal" data-category="classic glass">
+                <div class="product-image">
+                    <span class="product-badge">Хит</span>
+                    <button class="product-favorite" onclick="toggleFavorite(this)"><span>🤍</span></button>
+                    🔴
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Стеклянные</p>
+                    <h3>Стеклянный шар «Зимний лес»</h3>
+                    <p>Расписной шар с зимним пейзажем — заснеженные ели и домик с тёплым светом в окнах</p>
+                    <div class="product-footer">
+                        <span class="product-price">1 290 ₽</span>
+                        <button class="btn-cart" onclick="addToCart('Стеклянный шар Зимний лес')">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card reveal" data-category="wooden">
+                <div class="product-image">
+                    <span class="product-badge new">Новинка</span>
+                    <button class="product-favorite" onclick="toggleFavorite(this)"><span>🤍</span></button>
+                    🌲
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Деревянные</p>
+                    <h3>Деревянная ёлочка с резьбой</h3>
+                    <p>Ёлочка из липы с ажурной резьбой, покрытая натуральным воском. Аромат дерева — бонус!</p>
+                    <div class="product-footer">
+                        <span class="product-price">890 ₽</span>
+                        <button class="btn-cart" onclick="addToCart('Деревянная ёлочка')">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card reveal" data-category="classic glass">
+                <div class="product-image">
+                    <span class="product-badge hit">Бестселлер</span>
+                    <button class="product-favorite" onclick="toggleFavorite(this)"><span>🤍</span></button>
+                    ⭐
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Классические</p>
+                    <h3>Звезда «Золотое сияние»</h3>
+                    <p>Верхушка для ёлки — звезда с ручной росписью золотом и перламутровыми бликами</p>
+                    <div class="product-footer">
+                        <span class="product-price">1 790 ₽ <span class="old-price">2 200 ₽</span></span>
+                        <button class="btn-cart" onclick="addToCart('Звезда Золотое сияние')">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card reveal" data-category="personalized">
+                <div class="product-image">
+                    <span class="product-badge new">Новинка</span>
+                    <button class="product-favorite" onclick="toggleFavorite(this)"><span>🤍</span></button>
+                    💫
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Именные</p>
+                    <h3>Именной шар с гравировкой</h3>
+                    <p>Персональная игрушка с именем и годом. Идеальный подарок для создания семейной традиции</p>
+                    <div class="product-footer">
+                        <span class="product-price">1 590 ₽</span>
+                        <button class="btn-cart" onclick="addToCart('Именной шар')">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card reveal" data-category="classic">
+                <div class="product-image">
+                    <button class="product-favorite" onclick="toggleFavorite(this)"><span>🤍</span></button>
+                    🎀
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Классические</p>
+                    <h3>Набор «Бархатные банты»</h3>
+                    <p>Комплект из 6 бархатных бантов с ручной вышивкой снежинок серебряной нитью</p>
+                    <div class="product-footer">
+                        <span class="product-price">2 490 ₽</span>
+                        <button class="btn-cart" onclick="addToCart('Набор Бархатные банты')">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card reveal" data-category="wooden personalized">
+                <div class="product-image">
+                    <span class="product-badge">Хит</span>
+                    <button class="product-favorite" onclick="toggleFavorite(this)"><span>🤍</span></button>
+                    🏠
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Деревянные</p>
+                    <h3>Домик «Рождественская сказка»</h3>
+                    <p>Миниатюрный деревянный домик с подсветкой внутри. Создаёт волшебную атмосферу</p>
+                    <div class="product-footer">
+                        <span class="product-price">2 190 ₽ <span class="old-price">2 800 ₽</span></span>
+                        <button class="btn-cart" onclick="addToCart('Домик Рождественская сказка')">В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROMO ===== -->
+    <section class="promo">
+        <div class="promo-content reveal">
+            <h2>🎅 Новогодняя акция!</h2>
+            <div class="promo-discount">-20% на всё</div>
+            <p>Успейте заказать игрушки к Новому году! При заказе от 3 000 ₽ — бесплатная доставка и подарочная упаковка. Акция действует до 25 декабря</p>
+            <a href="#catalog" class="btn btn-primary">🎁 Выбрать подарки</a>
+        </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="process" id="process">
+        <div class="section-header reveal">
+            <p class="subtitle">Наше мастерство</p>
+            <h2>Как рождается чудо</h2>
+            <div class="divider"></div>
+            <p>Путь каждой игрушки от идеи до вашей ёлки — это увлекательный творческий процесс</p>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-step reveal">
+                <div class="step-number">1</div>
+                <h3>Идея и эскиз</h3>
+                <p>Наш дизайнер создаёт уникальный эскиз, вдохновляясь зимними пейзажами и праздничной атмосферой</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">2</div>
+                <h3>Выбор материалов</h3>
+                <p>Тщательно отбираем натуральные материалы: стекло, дерево, ткани — только лучшее качество</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">3</div>
+                <h3>Создание формы</h3>
+                <p>Мастер вручную выдувает стекло или вырезает из дерева — каждая форма уникальна</p>
+            </div>
+            <div class="process-step reveal">
+                <div class="step-number">4</div>
+                <h3>Роспись и декор</h3>
+                <p>Художник расписывает игрушку тонкими кистями, добавляя блёстки, стразы и золотые акценты</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery" id="gallery">
+        <div class="section-header reveal">
+            <p class="subtitle">Вдохновение</p>
+            <h2>Галерея работ</h2>
+            <div class="divider"></div>
+            <p>Полюбуйтесь на наши творения — каждая игрушка рассказывает свою историю</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item reveal">
+                🎄🔴✨
+                <div class="gallery-overlay"><span>Коллекция «Классика»</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                🌟
+                <div class="gallery-overlay"><span>Звёзды</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                🔔
+                <div class="gallery-overlay"><span>Колокольчики</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                🎀
+                <div class="gallery-overlay"><span>Декор</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                🏠
+                <div class="gallery-overlay"><span>Домики</span></div>
+            </div>
+            <div class="gallery-item reveal">
+                ⛄🎁❄️
+                <div class="gallery-overlay"><span>Коллекция «Сказка»</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials" id="reviews">
+        <div class="section-header reveal">
+            <p class="subtitle">Отзывы клиентов</p>
+            <h2>Что говорят о нас</h2>
+            <div class="divider"></div>
+            <p>Радость наших клиентов — лучшая награда за наш труд</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">Заказали набор игрушек на всю семью с именами — дети были в восторге! Качество потрясающее, видно, что каждая деталь сделана с любовью. Теперь это наша семейная традиция!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👩</div>
+                    <div class="author-info">
+                        <h4>Анна Петрова</h4>
+                        <span>Москва</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">Подарил маме деревянный домик с подсветкой — она расплакалась от счастья. Настолько красивая и тёплая вещь, что хочется смотреть на неё бесконечно. Спасибо мастерам!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👨</div>
+                    <div class="author-info">
+                        <h4>Дмитрий Козлов</h4>
+                        <span>Санкт-Петербург</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">Третий год заказываю здесь игрушки. Коллекция растёт, а каждый Новый год становится ещё волшебнее! Упаковка всегда безупречная, доставка быстрая. Рекомендую всем!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👩</div>
+                    <div class="author-info">
+                        <h4>Елена Сидорова</h4>
+                        <span>Екатеринбург</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="section-header reveal">
+            <p class="subtitle">Свяжитесь с нами</p>
+            <h2>Оформить заказ</h2>
+            <div class="divider"></div>
+            <p>Оставьте заявку и мы свяжемся с вами для уточнения деталей</p>
+        </div>
+
+        <div class="contact-wrapper">
+            <div class="contact-info reveal">
+                <h3>🎄 Давайте создадим праздник вместе!</h3>
+                <p>Мы всегда рады помочь вам подобрать идеальные украшения для вашей ёлки. Напишите нам или позвоните — ответим на все вопросы и поможем с выбором.</p>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-item-text">
+                            <h4>Телефон</h4>
+                            <p>+7 (800) 123-45-67</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-item-text">
+                            <h4>Email</h4>
+                            <p>hello@elochka-chudesa.ru</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-text">
+                            <h4>Мастерская</h4>
+                            <p>Москва, ул. Новогодняя, 25</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-item-text">
+                            <h4>Время работы</h4>
+                            <p>Пн–Сб: 10:00 – 20:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form reveal" id="orderForm" onsubmit="submitForm(event)">
+                <h3>🎁 Оставить заявку</h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" placeholder="Как вас зовут?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="product">Что вас интересует?</label>
+                    <select id="product">
+                        <option value="">Выберите категорию</option>
+                        <option value="glass">Стеклянные шары</option>
+                        <option value="wooden">Деревянные игрушки</option>
+                        <option value="personalized">Именные игрушки</option>
+                        <option value="sets">Наборы</option>
+                        <option value="custom">Индивидуальный заказ</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" placeholder="Расскажите о ваших пожеланиях..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-red">🎄 Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">🎄 Ёлочные <span>Чудеса</span></a>
+                <p>Мастерская ёлочных игрушек ручной работы. Создаём новогоднее настроение с 2016 года. Каждая игрушка — маленькое произведение искусства.</p>
+                <div class="footer-social">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="VK">💬</a>
+                    <a href="#" title="Telegram">✈️</a>
+                    <a href="#" title="Pinterest">📌</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Каталог</h4>
+                <ul>
+                    <li><a href="#catalog">Стеклянные шары</a></li>
+                    <li><a href="#catalog">Деревянные игрушки</a></li>
+                    <li><a href="#catalog">Именные украшения</a></li>
+                    <li><a href="#catalog">Наборы</a></li>
+                    <li><a href="#catalog">Верхушки для ёлки</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Информация</h4>
+                <ul>
+                    <li><a href="#features">О мастерской</a></li>
+                    <li><a href="#process">Как мы работаем</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#">Доставка и оплата</a></li>
+                    <li><a href="#">Возврат</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Контакты</h4>
+                <ul>
+                    <li><a href="tel:+78001234567">+7 (800) 123-45-67</a></li>
+                    <li><a href="mailto:hello@elochka-chudesa.ru">hello@elochka-chudesa.ru</a></li>
+                    <li><a href="#">Москва, ул. Новогодняя, 25</a></li>
+                    <li><a href="#">Пн–Сб: 10:00 – 20:00</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Ёлочные Чудеса. Все права защищены.</p>
+            <p>Сделано с ❤️ и ✨ новогодним настроением</p>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <span class="modal-icon" id="modalIcon">🎉</span>
+            <h3 id="modalTitle">Отлично!</h3>
+            <p id="modalText">Ваш текст тут</p>
+            <button class="btn btn-red" onclick="closeModal()">Замечательно!</button>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== SNOWFALL =====
+        function createSnowfall() {
+            const snowfall = document.getElementById('snowfall');
+            const snowflakes = ['❄', '❅', '❆', '•', '✦'];
+
+            setInterval(() => {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.fontSize = (Math.random() * 1 + 0.5) + 'rem';
+                snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                snowfall.appendChild(snowflake);
+
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 10000);
+            }, 300);
+        }
+        createSnowfall();
+
+        // ===== HEADER SCROLL =====
+        const header = document.getElementById('header');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.remove('transparent');
+                header.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                header.classList.add('transparent');
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // ===== BURGER MENU =====
+        const burger = document.getElementById('burger');
+        const navLinks = document.getElementById('navLinks');
+
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ===== SCROLL REVEAL =====
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach((el, i) => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const revealPoint = 120;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    el.style.transitionDelay = (i % 3) * 0.15 + 's';
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // ===== COUNTER ANIMATION =====
+        let countersStarted = false;
+
+        function animateCounters() {
+            if (countersStarted) return;
+            const counters = document.querySelectorAll('.stat-number');
+            const firstCounter = counters[0];
+            if (!firstCounter) return;
+
+            const rect = firstCounter.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                countersStarted = true;
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const update = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = Math.ceil(current).toLocaleString();
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.textContent = target.toLocaleString() + '+';
+                        }
+                    };
+                    update();
+                });
+            }
+        }
+
+        window.addEventListener('scroll', animateCounters);
+
+        // ===== PRODUCT FILTER =====
+        function filterProducts(category) {
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInDown 0.5s ease forwards';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // ===== FAVORITE TOGGLE =====
+        function toggleFavorite(btn) {
+            btn.classList.toggle('active');
+            const span = btn.querySelector('span');
+            if (btn.classList.contains('active')) {
+                span.textContent = '❤️';
+            } else {
+                span.textContent = '🤍';
+            }
+        }
+
+        // ===== ADD TO CART =====
+        function addToCart(productName) {
+            showModal('🎄', 'Добавлено в корзину!', `«${productName}» — отличный выбор! Мы свяжемся с вами для оформления заказа.`);
+        }
+
+        // ===== FORM SUBMIT =====
+        function submitForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            showModal('🎉', 'Заявка отправлена!', `Спасибо, ${name}! Мы получили вашу заявку и свяжемся с вами в ближайшее время. С наступающим Новым годом! 🎄`);
+            document.getElementById('orderForm').reset();
+        }
+
+        // ===== MODAL =====
+        function showModal(icon, title, text) {
+            document.getElementById('modalIcon').textContent = icon;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalText').textContent = text;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        // ===== SCROLL TO TOP =====
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
